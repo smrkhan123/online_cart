@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<style type="text/css">
+body{
+    margin: 0;
+    padding: 0;
+    font-family:century gothic;
+    color:white;
+    background-image:linear-gradient(#B81D22,grey,black);
+    background-size:100% 100%;
+  }
+  td{
+    padding: 10px;
+  }
+  th{
+    padding: 10px;
+  }
+  tr:hover{
+    color:black !important;
+  }
+  .hov:hover{
+  background-color: #B81D22;
+}
+a:hover{
+  color:white !important;
+}
+</style>
+<!------ Include the above in your HEAD tag ---------->
+</head>
+<body>
+  <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a href="index.html"><img style="height: 50px;" src="{% static 'images/logo2.png' %}" alt="" /></a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="hov"><a href="/">Home</a></li>
+      <li class="hov"><a href="">View All Products</a></li>
+      <li class="hov"><a href="{% url 'addproduct' %}">Add Item</a></li>
+      <li class="hov"><a href="{% url 'change_password' %}">Change Password</a></li>
+      <li class="active"><a style="background-color: #B81D22 !important; color:white;" href="{% url 'vieworder' %}">View Order</a></li>
+    </ul>
+  </div>
+</nav>
+<center>
+  <h1><span style="font-family: century-gothic; font-style: italic;">Orders Of</span><img style="margin-left: -15px;" src="{% static 'images/logo2.png' %}"></h1>
+</center>
+<div class="container">
+      <table align="center" class="table table-border table-hover table-responsive">
+            <tr>
+                  <th>S.no</th>
+                  <th>Email</th>
+                  <th>Name</th>
+                  <th>Address 1</th>
+                  <th>Address 2</th>
+                  <th>City</th>
+                  <th>State</th>
+                  <th>Zip Code</th>
+            </tr>
+            {% for i in order %}
+              <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{i.email}}</td>
+                <td>{{i.name}}</td>
+                <td>{{i.address1}}</td>
+                <td>{{i.address2}}</td>
+                <td>{{i.city}}</td>
+                <td>{{i.state}}</td>
+                <td>{{i.zip_code}}</td>
+                
+              </tr>
+            {% endfor %}
+      </table>
+</div>
+</body>
+</html>
